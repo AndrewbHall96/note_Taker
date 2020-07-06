@@ -10,9 +10,11 @@ app.use(express.json());
 
 //DATA
 
-var Notes = [];
+var notes = [];
 
 //Routes
+// Basic route that sends the user first to the AJAX Page
+
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, notes.html));
 });
@@ -20,6 +22,14 @@ app.get("/notes", (req, res) => {
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, index.html));
 });
+
+// Displays all notes?
+
+//Return JSON of arrays
+app.get("/api/notes", (req, res) => {
+    res.json(notes);
+})
+
 
 // Starts the server to begin listening
 // =============================================================
