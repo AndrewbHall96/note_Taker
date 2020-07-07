@@ -25,6 +25,11 @@ app.get("/api/notes", (req, res) => {
     res.json(notes);
 });
 
+app.post("/api/notes", (req, res) => {
+  console.log(req.body);
+  notes.push(req.body);
+});
+
 // Displays a single note, or returns false
 app.get("/api/notes/:note", function(req, res) {
     var chosen = req.params.note;
