@@ -26,7 +26,7 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-  console.log(req.body);
+  req.body.id = '_' + Math.random().toString(36).substr(2, 9);
   notes.push(req.body);
 });
 
