@@ -45,8 +45,8 @@
   $("#add-btn").on("click", function(event) {
     event.preventDefault();
     var newNote = {
-      noteTitle: $(".note-title").val().trim(),
-      noteText: $(".note-textarea").val().trim(),
+      title: $(".note-title").val().trim(),
+      text: $(".note-textarea").val().trim(),
     };
     // Question: What does this code do??
     $.post("/api/notes", newNote)
