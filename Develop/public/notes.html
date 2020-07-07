@@ -30,8 +30,8 @@
         </div>
       </div>
       <div class="col-8">
-        <input id="note-title" placeholder="Note Title" maxlength="28" type="text">
-        <textarea id="note-textarea" placeholder="Note Text"></textarea>
+        <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
+        <textarea class="note-textarea" placeholder="Note Text"></textarea>
         <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Submit</button>
       </div>
     </div>
@@ -45,8 +45,8 @@
   $("#add-btn").on("click", function(event) {
     event.preventDefault();
     var newNote = {
-      noteTitle: $("#note-title").val().trim(),
-      noteText: $("#note-textarea").val().trim(),
+      noteTitle: $(".note-title").val().trim(),
+      noteText: $(".note-textarea").val().trim(),
     };
 console.log(newNote)
     // Question: What does this code do??
