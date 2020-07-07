@@ -16,41 +16,47 @@ var notes = [];
 //Routes
 // Basic route that sends the user first to the AJAX Page
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/notes.html"));
+  res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
 // Displays all notes?
 //Return JSON of arrays
 app.get("/api/notes", (req, res) => {
-    res.json(notes);
+  res.json(notes);
 });
 
 app.post("/api/notes", (req, res) => {
   req.body.id = '_' + Math.random().toString(36).substr(2, 9);
   notes.push(req.body);
+  res.redirect('back');
 });
 
 // Displays a single note, or returns false
-app.get("/api/notes/:note", function(req, res) {
-    var chosen = req.params.note;
-  
-    console.log(chosen);
-  
-    for (var i = 0; i < notes.length; i++) {
-      if (chosen === notes[i].routeName) {
-        return res.json(notes[i]);
-      }
+app.get("/api/notes/:note", (req, res) => {
+  var chosen = req.params.note;
+
+  console.log(chosen);
+
+  for (var i = 0; i < notes.length; i++) {
+    if (chosen === notes[i].routeName) {
+      return res.json(notes[i]);
     }
-  
-    return res.json(false);
-  });
+  }
+
+  return res.json(false);
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+  notes = notes.filter(item => item.id != req.params.id);
+  res.redirect('/notes');
+});
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
