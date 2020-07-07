@@ -28,7 +28,7 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
   req.body.id = '_' + Math.random().toString(36).substr(2, 9);
   notes.push(req.body);
-  res.json('new note created');
+  res.sendStatus(201);
 });
 
 // Displays a single note, or returns false
@@ -48,7 +48,7 @@ app.get("/api/notes/:note", (req, res) => {
 
 app.delete("/api/notes/:id", (req, res) => {
   notes = notes.filter(item => item.id != req.params.id);
-  res.json('deleted');
+  res.sendStatus(200);
 });
 
 app.get("*", (req, res) => {
