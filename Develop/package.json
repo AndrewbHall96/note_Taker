@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "live": "nodemon --watch 'public/**/*' --watch '*' -e html,js server.js"
+    "live": "nodemon --watch 'public/**/*' --watch '*' -e html,js server.js",
+    "start": "noder server.js"
   },
   "author": "",
   "license": "ISC",
